@@ -14,9 +14,7 @@ class Student:
         students_list += [self]
 
     def __str__(self):
-        print(f'Имя: {self.name}')
-        print(f'Фамилия: {self.surname}')
-        print(f'Пол: {self.gender}')
+        print(f'Имя: {self.name}\nФамилия: {self.surname}\nПол: {self.gender}')
         print(f'Средняя оценка за домашние задания: {self.average_grade()}')
         print(f'Курсы в процессе обучения: {", ".join(str(i) for i in self.courses_in_progress)}')
         return f'Завершенные курсы: {", ".join(str(i) for i in self.finished_courses)}\n'
