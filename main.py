@@ -2,7 +2,19 @@ students_list = []
 lectors_list = []
 
 
-class Student:
+class lt:
+    def __lt__(self, other):
+        print(f'Процесс сравнения {self.name} с {other.name} запущен.')
+        print(f'{self.name} лучше {other.name}?')
+        print(f'Значения: {self.name} - {self.average_grade()}, {other.name} - {other.average_grade()}.')
+        if self.average_grade() < other.average_grade():
+            answer = 'Нет!'
+        else:
+            answer = 'Да!'
+        return f'Ответ: {answer}\n'
+
+
+class Student(lt):
     def __init__(self, name, surname, gender):
         self.name = name
         self.surname = surname
@@ -19,15 +31,15 @@ class Student:
         print(f'Курсы в процессе обучения: {", ".join(str(i) for i in self.courses_in_progress)}')
         return f'Завершенные курсы: {", ".join(str(i) for i in self.finished_courses)}\n'
 
-    def __lt__(self, other):
-        print(f'Процесс сравнения {self.name} с {other.name} запущен.')
-        print(f'{self.name} лучше {other.name}?')
-        print(f'Значения: {self.name} - {self.average_grade()}, {other.name} - {other.average_grade()}.')
-        if self.average_grade() < other.average_grade():
-            answer = 'Нет!'
-        else:
-            answer = 'Да!'
-        return f'Ответ: {answer}\n'
+    # def __lt__(self, other):
+    #     print(f'Процесс сравнения {self.name} с {other.name} запущен.')
+    #     print(f'{self.name} лучше {other.name}?')
+    #     print(f'Значения: {self.name} - {self.average_grade()}, {other.name} - {other.average_grade()}.')
+    #     if self.average_grade() < other.average_grade():
+    #         answer = 'Нет!'
+    #     else:
+    #         answer = 'Да!'
+    #     return f'Ответ: {answer}\n'
 
     def rate_qe(self, lecturer, course, grade):
         if 0 <= grade <= 10:
@@ -61,7 +73,7 @@ class Mentor:
         self.courses_attached = []
 
 
-class Lecturer(Mentor):
+class Lecturer(Mentor, lt):
     def __init__(self, name, surname):
         super().__init__(name, surname)
         self.grades = {}
@@ -73,15 +85,15 @@ class Lecturer(Mentor):
         print(f'Фамилия: {self.surname}')
         return f'Средняя оценка за лекции: {self.average_grade()}\n'
 
-    def __lt__(self, other):
-        print(f'Процесс сравнения {self.name} с {other.name} запущен.')
-        print(f'{self.name} лучше {other.name}?')
-        print(f'Значения: {self.name} - {self.average_grade()}, {other.name} - {other.average_grade()}.')
-        if self.average_grade() < other.average_grade():
-            answer = 'Нет!'
-        else:
-            answer = 'Да!'
-        return f'Ответ: {answer}\n'
+    # def __lt__(self, other):
+    #     print(f'Процесс сравнения {self.name} с {other.name} запущен.')
+    #     print(f'{self.name} лучше {other.name}?')
+    #     print(f'Значения: {self.name} - {self.average_grade()}, {other.name} - {other.average_grade()}.')
+    #     if self.average_grade() < other.average_grade():
+    #         answer = 'Нет!'
+    #     else:
+    #         answer = 'Да!'
+    #     return f'Ответ: {answer}\n'
 
     def average_grade(self):
         amount = 0
